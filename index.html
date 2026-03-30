@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sims 4 Mod Builder - Stark Studio Labs</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/builders.css">
+</head>
+<body>
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="6" fill="#58a6ff"/>
+          <path d="M7 8h14v2H7zm0 5h10v2H7zm0 5h12v2H7z" fill="#0d1117"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">Mod Builder</span>
+        <span class="brand-sub">Stark Studio Labs</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-view="dashboard" onclick="switchView('dashboard')">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M2 2h6v6H2zm8 0h6v6h-6zM2 10h6v6H2zm8 0h6v6h-6z"/></svg>
+        <span>Dashboard</span>
+      </button>
+      <button class="nav-item" data-view="trait-builder" onclick="switchView('trait-builder')">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M9 1l2.47 5.01L17 6.64l-4 3.9.94 5.5L9 13.77l-4.94 2.27.94-5.5-4-3.9 5.53-.63z"/></svg>
+        <span>Trait Builder</span>
+      </button>
+      <button class="nav-item" data-view="career-builder" onclick="switchView('career-builder')">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M6 2v2H3a1 1 0 00-1 1v10a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 00-1-1h-3V2H6zm1 2h4V3H7v1z"/></svg>
+        <span>Career Builder</span>
+      </button>
+      <button class="nav-item" data-view="interaction-builder" onclick="switchView('interaction-builder')">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M9 2a5 5 0 00-5 5c0 2.76 5 9 5 9s5-6.24 5-9a5 5 0 00-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg>
+        <span>Interaction Builder</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="version-badge">Prototype v0.1.0</div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-content" id="mainContent">
+
+    <!-- DASHBOARD VIEW -->
+    <section class="view active" id="view-dashboard">
+      <header class="view-header">
+        <div>
+          <h1>Mod Builder</h1>
+          <p class="view-subtitle">Build Sims 4 mods visually. No XML required.</p>
+        </div>
+      </header>
+
+      <div class="dashboard-grid">
+        <div class="template-card" onclick="switchView('trait-builder')">
+          <div class="card-icon trait-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2l4.47 9.01L30 12.24l-7 6.83L24.94 29 16 24.27 7.06 29 9 19.07l-7-6.83 9.53-1.23z"/></svg>
+          </div>
+          <h3>New Trait</h3>
+          <p>Define personality traits with buffs, conflicts, and CAS icons.</p>
+          <div class="card-tags">
+            <span class="tag">Beginner</span>
+            <span class="tag">Gameplay</span>
+          </div>
+        </div>
+
+        <div class="template-card" onclick="switchView('career-builder')">
+          <div class="card-icon career-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d="M10 4v4H5a2 2 0 00-2 2v16a2 2 0 002 2h22a2 2 0 002-2V10a2 2 0 00-2-2h-5V4H10zm2 2h8v2h-8V6z"/></svg>
+          </div>
+          <h3>New Career</h3>
+          <p>Create branching careers with levels, salaries, and schedules.</p>
+          <div class="card-tags">
+            <span class="tag">Intermediate</span>
+            <span class="tag">Careers</span>
+          </div>
+        </div>
+
+        <div class="template-card" onclick="switchView('interaction-builder')">
+          <div class="card-icon interaction-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d="M16 3a9 9 0 00-9 9c0 5.25 9 17 9 17s9-11.75 9-17a9 9 0 00-9-9zm0 12a3 3 0 110-6 3 3 0 010 6z"/></svg>
+          </div>
+          <h3>New Interaction</h3>
+          <p>Add social and object interactions with custom outcomes.</p>
+          <div class="card-tags">
+            <span class="tag">Beginner</span>
+            <span class="tag">Social</span>
+          </div>
+        </div>
+
+        <div class="template-card disabled">
+          <div class="card-icon buff-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d="M16 4C9.37 4 4 9.37 4 16s5.37 12 12 12 12-5.37 12-12S22.63 4 16 4zm-2 17l-5-5 1.41-1.41L14 18.17l7.59-7.59L23 12l-9 9z"/></svg>
+          </div>
+          <h3>New Buff</h3>
+          <p>Create moodlets with emotions, durations, and triggers.</p>
+          <div class="card-tags">
+            <span class="tag">Coming Soon</span>
+          </div>
+        </div>
+
+        <div class="template-card disabled">
+          <div class="card-icon skill-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d="M4 26h24v2H4zm2-4l5-14h2l5 14h-2l-1.25-3.5h-5.5L8 22H6zm4.12-5.5h3.76L12 12.5l-1.88 8z"/></svg>
+          </div>
+          <h3>New Skill</h3>
+          <p>Define custom skills with levels, unlocks, and descriptions.</p>
+          <div class="card-tags">
+            <span class="tag">Coming Soon</span>
+          </div>
+        </div>
+
+        <div class="template-card disabled">
+          <div class="card-icon aspiration-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z"/></svg>
+          </div>
+          <h3>New Aspiration</h3>
+          <p>Build multi-tier aspirations with milestone rewards.</p>
+          <div class="card-tags">
+            <span class="tag">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="recent-section">
+        <h2>Recent Projects</h2>
+        <div class="empty-state">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="6" y="10" width="36" height="28" rx="3"/>
+            <path d="M6 18h36M18 10v8"/>
+          </svg>
+          <p>No projects yet. Pick a template above to get started.</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- TRAIT BUILDER VIEW -->
+    <section class="view" id="view-trait-builder">
+      <header class="view-header">
+        <div>
+          <button class="back-btn" onclick="switchView('dashboard')">&larr; Back</button>
+          <h1>Trait Builder</h1>
+          <p class="view-subtitle">Define a new personality trait for your Sims.</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-secondary" onclick="resetTraitForm()">Reset</button>
+          <button class="btn btn-primary" onclick="exportMod('trait')">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1v9M4 6l4 4 4-4M2 12v2h12v-2"/></svg>
+            Export .package
+          </button>
+        </div>
+      </header>
+
+      <div class="builder-layout">
+        <div class="builder-form">
+          <!-- Basic Info -->
+          <div class="form-section">
+            <h3 class="section-title">Basic Information</h3>
+            <div class="form-group">
+              <label for="trait-name">
+                Trait Name
+                <span class="tooltip" data-tip="The display name shown in CAS and the trait panel. Keep it short and descriptive.">?</span>
+              </label>
+              <input type="text" id="trait-name" placeholder="e.g. Night Owl" oninput="updateTraitPreview()">
+            </div>
+            <div class="form-group">
+              <label for="trait-desc">
+                Description
+                <span class="tooltip" data-tip="Shown when hovering over the trait in CAS. Describe what the trait does in 1-2 sentences.">?</span>
+              </label>
+              <textarea id="trait-desc" rows="3" placeholder="e.g. This Sim thrives after dark, gaining mood boosts at night but feeling sluggish in the morning." oninput="updateTraitPreview()"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="trait-category">
+                  Category
+                  <span class="tooltip" data-tip="The CAS category where this trait will appear. Emotional traits affect moods. Lifestyle traits affect daily behaviors.">?</span>
+                </label>
+                <select id="trait-category" onchange="updateTraitPreview()">
+                  <option value="Emotional">Emotional</option>
+                  <option value="Hobby">Hobby</option>
+                  <option value="Lifestyle">Lifestyle</option>
+                  <option value="Social">Social</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="trait-ages">
+                  Ages
+                  <span class="tooltip" data-tip="Which age groups can have this trait. Most traits work for Teen through Elder.">?</span>
+                </label>
+                <select id="trait-ages" onchange="updateTraitPreview()">
+                  <option value="Teen, Young Adult, Adult, Elder">Teen+</option>
+                  <option value="Child, Teen, Young Adult, Adult, Elder">Child+</option>
+                  <option value="Toddler, Child, Teen, Young Adult, Adult, Elder">Toddler+</option>
+                  <option value="Young Adult, Adult, Elder">Young Adult+</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Icon Selection -->
+          <div class="form-section">
+            <h3 class="section-title">
+              Icon
+              <span class="tooltip" data-tip="Choose a plumbob color to represent this trait in CAS and the trait panel.">?</span>
+            </h3>
+            <div class="icon-grid" id="trait-icon-grid">
+              <button class="icon-option selected" data-icon="plumbob-green" onclick="selectTraitIcon(this)">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l6 10-6 10-6-10z" fill="#4ade80"/></svg>
+              </button>
+              <button class="icon-option" data-icon="plumbob-blue" onclick="selectTraitIcon(this)">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l6 10-6 10-6-10z" fill="#60a5fa"/></svg>
+              </button>
+              <button class="icon-option" data-icon="plumbob-red" onclick="selectTraitIcon(this)">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l6 10-6 10-6-10z" fill="#f87171"/></svg>
+              </button>
+              <button class="icon-option" data-icon="plumbob-purple" onclick="selectTraitIcon(this)">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l6 10-6 10-6-10z" fill="#c084fc"/></svg>
+              </button>
+              <button class="icon-option" data-icon="plumbob-yellow" onclick="selectTraitIcon(this)">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l6 10-6 10-6-10z" fill="#facc15"/></svg>
+              </button>
+              <button class="icon-option" data-icon="plumbob-orange" onclick="selectTraitIcon(this)">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l6 10-6 10-6-10z" fill="#fb923c"/></svg>
+              </button>
+              <button class="icon-option" data-icon="plumbob-pink" onclick="selectTraitIcon(this)">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l6 10-6 10-6-10z" fill="#f472b6"/></svg>
+              </button>
+              <button class="icon-option" data-icon="plumbob-teal" onclick="selectTraitIcon(this)">
+                <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l6 10-6 10-6-10z" fill="#2dd4bf"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Buff Effects -->
+          <div class="form-section">
+            <h3 class="section-title">
+              Buff Effects
+              <span class="tooltip" data-tip="Moodlets that this trait grants. Each buff gives an emotional weight that influences your Sim's current mood.">?</span>
+            </h3>
+            <div id="trait-buffs">
+              <div class="buff-row" data-index="0">
+                <select class="buff-emotion" onchange="updateTraitPreview()">
+                  <option value="">Select emotion...</option>
+                  <option value="Happy">Happy</option>
+                  <option value="Confident">Confident</option>
+                  <option value="Inspired">Inspired</option>
+                  <option value="Focused">Focused</option>
+                  <option value="Energized">Energized</option>
+                  <option value="Flirty">Flirty</option>
+                  <option value="Playful">Playful</option>
+                  <option value="Sad">Sad</option>
+                  <option value="Angry">Angry</option>
+                  <option value="Tense">Tense</option>
+                  <option value="Embarrassed">Embarrassed</option>
+                  <option value="Bored">Bored</option>
+                  <option value="Uncomfortable">Uncomfortable</option>
+                  <option value="Dazed">Dazed</option>
+                </select>
+                <input type="number" class="buff-weight" min="1" max="10" value="2" placeholder="Weight" onchange="updateTraitPreview()">
+                <input type="text" class="buff-reason" placeholder="Buff reason (e.g. Feeling the night energy)" oninput="updateTraitPreview()">
+                <button class="btn-icon remove-buff" onclick="removeBuffRow(this)" title="Remove buff">&times;</button>
+              </div>
+            </div>
+            <button class="btn btn-ghost" onclick="addBuffRow()">+ Add Buff</button>
+          </div>
+
+          <!-- Conflicts -->
+          <div class="form-section">
+            <h3 class="section-title">
+              Conflicting Traits
+              <span class="tooltip" data-tip="Traits that cannot be assigned together with this one. Sims cannot have both conflicting traits at the same time.">?</span>
+            </h3>
+            <div class="conflict-checkboxes" id="trait-conflicts">
+              <label class="checkbox-label"><input type="checkbox" value="Active" onchange="updateTraitPreview()"> Active</label>
+              <label class="checkbox-label"><input type="checkbox" value="Lazy" onchange="updateTraitPreview()"> Lazy</label>
+              <label class="checkbox-label"><input type="checkbox" value="Loner" onchange="updateTraitPreview()"> Loner</label>
+              <label class="checkbox-label"><input type="checkbox" value="Outgoing" onchange="updateTraitPreview()"> Outgoing</label>
+              <label class="checkbox-label"><input type="checkbox" value="Cheerful" onchange="updateTraitPreview()"> Cheerful</label>
+              <label class="checkbox-label"><input type="checkbox" value="Gloomy" onchange="updateTraitPreview()"> Gloomy</label>
+              <label class="checkbox-label"><input type="checkbox" value="Hot-Headed" onchange="updateTraitPreview()"> Hot-Headed</label>
+              <label class="checkbox-label"><input type="checkbox" value="Good" onchange="updateTraitPreview()"> Good</label>
+              <label class="checkbox-label"><input type="checkbox" value="Evil" onchange="updateTraitPreview()"> Evil</label>
+              <label class="checkbox-label"><input type="checkbox" value="Romantic" onchange="updateTraitPreview()"> Romantic</label>
+              <label class="checkbox-label"><input type="checkbox" value="Noncommittal" onchange="updateTraitPreview()"> Noncommittal</label>
+              <label class="checkbox-label"><input type="checkbox" value="Self-Assured" onchange="updateTraitPreview()"> Self-Assured</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel">
+          <div class="preview-header">
+            <h3>XML Preview</h3>
+            <button class="btn btn-ghost btn-sm" onclick="copyPreview('trait')">Copy XML</button>
+          </div>
+          <pre class="preview-code" id="trait-preview"><code>&lt;!-- Fill in the form to see generated XML --&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAREER BUILDER VIEW -->
+    <section class="view" id="view-career-builder">
+      <header class="view-header">
+        <div>
+          <button class="back-btn" onclick="switchView('dashboard')">&larr; Back</button>
+          <h1>Career Builder</h1>
+          <p class="view-subtitle">Create a new career track with levels, salaries, and schedules.</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-secondary" onclick="resetCareerForm()">Reset</button>
+          <button class="btn btn-primary" onclick="exportMod('career')">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1v9M4 6l4 4 4-4M2 12v2h12v-2"/></svg>
+            Export .package
+          </button>
+        </div>
+      </header>
+
+      <div class="builder-layout">
+        <div class="builder-form">
+          <!-- Basic Info -->
+          <div class="form-section">
+            <h3 class="section-title">Basic Information</h3>
+            <div class="form-group">
+              <label for="career-name">
+                Career Name
+                <span class="tooltip" data-tip="The name shown in the career panel. Choose something that sounds like a real profession.">?</span>
+              </label>
+              <input type="text" id="career-name" placeholder="e.g. Forensic Investigator" oninput="updateCareerPreview()">
+            </div>
+            <div class="form-group">
+              <label for="career-desc">
+                Description
+                <span class="tooltip" data-tip="A brief description shown when your Sim joins this career. 1-2 sentences about what the career involves.">?</span>
+              </label>
+              <textarea id="career-desc" rows="3" placeholder="e.g. Uncover the truth behind mysterious cases and bring justice to Sim society." oninput="updateCareerPreview()"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="career-track">
+                  Track Type
+                  <span class="tooltip" data-tip="Standard careers have linear progression. Branching careers split into two paths at a chosen level.">?</span>
+                </label>
+                <select id="career-track" onchange="updateCareerPreview()">
+                  <option value="Standard">Standard (Linear)</option>
+                  <option value="Branching">Branching (Split)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="career-schedule">
+                  Work Schedule
+                  <span class="tooltip" data-tip="The default schedule for this career. Individual levels can override this.">?</span>
+                </label>
+                <select id="career-schedule" onchange="updateCareerPreview()">
+                  <option value="Mon-Fri 9AM-5PM">Mon-Fri 9AM-5PM</option>
+                  <option value="Mon-Fri 6AM-2PM">Mon-Fri 6AM-2PM</option>
+                  <option value="Mon-Fri 2PM-10PM">Mon-Fri 2PM-10PM</option>
+                  <option value="Mon-Fri 10PM-6AM">Mon-Fri 10PM-6AM</option>
+                  <option value="Tue-Sat 9AM-5PM">Tue-Sat 9AM-5PM</option>
+                  <option value="Flexible">Flexible / Work from Home</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Levels -->
+          <div class="form-section">
+            <h3 class="section-title">
+              Career Levels
+              <span class="tooltip" data-tip="Define each level of the career. Each level has a title, salary, and required skill. Base game careers typically have 10 levels.">?</span>
+            </h3>
+            <div id="career-levels">
+              <div class="career-level-row" data-index="0">
+                <div class="level-number">1</div>
+                <div class="level-fields">
+                  <input type="text" class="level-title" placeholder="Level title (e.g. Intern)" oninput="updateCareerPreview()">
+                  <div class="level-row-inner">
+                    <div class="field-with-label">
+                      <label>Salary/hr</label>
+                      <input type="number" class="level-salary" min="0" value="25" oninput="updateCareerPreview()">
+                    </div>
+                    <div class="field-with-label">
+                      <label>Required Skill</label>
+                      <select class="level-skill" onchange="updateCareerPreview()">
+                        <option value="">None</option>
+                        <option value="Logic">Logic</option>
+                        <option value="Charisma">Charisma</option>
+                        <option value="Writing">Writing</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Cooking">Cooking</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Handiness">Handiness</option>
+                        <option value="Gardening">Gardening</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Guitar">Guitar</option>
+                        <option value="Mischief">Mischief</option>
+                        <option value="Photography">Photography</option>
+                        <option value="Rocket Science">Rocket Science</option>
+                        <option value="Research & Debate">Research & Debate</option>
+                      </select>
+                    </div>
+                    <div class="field-with-label">
+                      <label>Skill Lvl</label>
+                      <input type="number" class="level-skill-req" min="0" max="10" value="0" oninput="updateCareerPreview()">
+                    </div>
+                  </div>
+                </div>
+                <button class="btn-icon remove-level" onclick="removeCareerLevel(this)" title="Remove level">&times;</button>
+              </div>
+            </div>
+            <button class="btn btn-ghost" onclick="addCareerLevel()">+ Add Level</button>
+          </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel">
+          <div class="preview-header">
+            <h3>XML Preview</h3>
+            <button class="btn btn-ghost btn-sm" onclick="copyPreview('career')">Copy XML</button>
+          </div>
+          <pre class="preview-code" id="career-preview"><code>&lt;!-- Fill in the form to see generated XML --&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTION BUILDER VIEW -->
+    <section class="view" id="view-interaction-builder">
+      <header class="view-header">
+        <div>
+          <button class="back-btn" onclick="switchView('dashboard')">&larr; Back</button>
+          <h1>Interaction Builder</h1>
+          <p class="view-subtitle">Add a new social or object interaction.</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-secondary" onclick="resetInteractionForm()">Reset</button>
+          <button class="btn btn-primary" onclick="exportMod('interaction')">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1v9M4 6l4 4 4-4M2 12v2h12v-2"/></svg>
+            Export .package
+          </button>
+        </div>
+      </header>
+
+      <div class="builder-layout">
+        <div class="builder-form">
+          <!-- Basic Info -->
+          <div class="form-section">
+            <h3 class="section-title">Basic Information</h3>
+            <div class="form-group">
+              <label for="interaction-name">
+                Interaction Name
+                <span class="tooltip" data-tip="The name displayed in the pie menu. Keep it short — it appears in a small radial menu.">?</span>
+              </label>
+              <input type="text" id="interaction-name" placeholder="e.g. Challenge to Dance-Off" oninput="updateInteractionPreview()">
+            </div>
+            <div class="form-group">
+              <label for="interaction-desc">
+                Description
+                <span class="tooltip" data-tip="Internal description for your reference. Not shown in-game.">?</span>
+              </label>
+              <textarea id="interaction-desc" rows="2" placeholder="e.g. A competitive dance interaction between two Sims." oninput="updateInteractionPreview()"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="interaction-target">
+                  Target Type
+                  <span class="tooltip" data-tip="What the interaction targets. Sim-to-Sim for social interactions. Sim-to-Object for object interactions.">?</span>
+                </label>
+                <select id="interaction-target" onchange="updateInteractionPreview()">
+                  <option value="Sim">Sim (Social)</option>
+                  <option value="Object">Object</option>
+                  <option value="Self">Self (No Target)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="interaction-category">
+                  Pie Menu Category
+                  <span class="tooltip" data-tip="Which pie menu category this interaction appears under.">?</span>
+                </label>
+                <select id="interaction-category" onchange="updateInteractionPreview()">
+                  <option value="Friendly">Friendly</option>
+                  <option value="Funny">Funny</option>
+                  <option value="Romantic">Romantic</option>
+                  <option value="Mean">Mean</option>
+                  <option value="Mischief">Mischief</option>
+                  <option value="Custom">Custom Category</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Availability -->
+          <div class="form-section">
+            <h3 class="section-title">
+              Availability
+              <span class="tooltip" data-tip="When and for whom this interaction is available.">?</span>
+            </h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="interaction-ages">Ages</label>
+                <select id="interaction-ages" onchange="updateInteractionPreview()">
+                  <option value="Teen, Young Adult, Adult, Elder">Teen+</option>
+                  <option value="Child, Teen, Young Adult, Adult, Elder">Child+</option>
+                  <option value="Young Adult, Adult, Elder">Young Adult+</option>
+                  <option value="All">All Ages</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="interaction-autonomy">
+                  Autonomy
+                  <span class="tooltip" data-tip="Can Sims perform this interaction autonomously, or only when directed by the player?">?</span>
+                </label>
+                <select id="interaction-autonomy" onchange="updateInteractionPreview()">
+                  <option value="true">Autonomous</option>
+                  <option value="false">Player-Directed Only</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Outcome Effects -->
+          <div class="form-section">
+            <h3 class="section-title">
+              Outcome Effects
+              <span class="tooltip" data-tip="What happens when the interaction completes successfully. Add relationship changes, skill gains, buffs, or need changes.">?</span>
+            </h3>
+            <div id="interaction-outcomes">
+              <div class="outcome-row" data-index="0">
+                <select class="outcome-type" onchange="updateInteractionPreview()">
+                  <option value="">Select effect...</option>
+                  <option value="relationship">Relationship Change</option>
+                  <option value="skill">Skill Gain</option>
+                  <option value="buff">Apply Buff</option>
+                  <option value="need">Need Change</option>
+                </select>
+                <input type="text" class="outcome-detail" placeholder="Detail (e.g. Friendship +5)" oninput="updateInteractionPreview()">
+                <button class="btn-icon remove-outcome" onclick="removeOutcomeRow(this)" title="Remove effect">&times;</button>
+              </div>
+            </div>
+            <button class="btn btn-ghost" onclick="addOutcomeRow()">+ Add Effect</button>
+          </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel">
+          <div class="preview-header">
+            <h3>XML Preview</h3>
+            <button class="btn btn-ghost btn-sm" onclick="copyPreview('interaction')">Copy XML</button>
+          </div>
+          <pre class="preview-code" id="interaction-preview"><code>&lt;!-- Fill in the form to see generated XML --&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Export Modal -->
+    <div class="modal-overlay" id="export-modal">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Export Mod</h2>
+          <button class="btn-icon" onclick="closeExportModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="export-modal-body">
+          <!-- Filled dynamically -->
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="closeExportModal()">Close</button>
+          <button class="btn btn-primary" onclick="downloadExport()">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1v9M4 6l4 4 4-4M2 12v2h12v-2"/></svg>
+            Download XML
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+  </main>
+
+  <script src="js/app.js"></script>
+  <script src="js/generators.js"></script>
+</body>
+</html>

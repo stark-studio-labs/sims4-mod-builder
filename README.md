@@ -150,7 +150,7 @@ sims4-mod-builder is not a replacement for Sims 4 Studio. S4S handles CAS items,
 
 ## 📊 Status
 
-In active development. No release date yet.
+**Prototype live.** Open `index.html` in any browser to try the Trait Builder, Career Builder, and Interaction Builder.
 
 Follow [Stark Studio Labs](https://github.com/stark-studio-labs) for updates. If you have specific mod types or features you'd like to see supported, open an issue.
 
@@ -158,8 +158,38 @@ Follow [Stark Studio Labs](https://github.com/stark-studio-labs) for updates. If
 
 ## 🚀 Getting Started
 
-> sims4-mod-builder is in active development. Want to try it early?
-> Star the repo and watch for releases, or join the discussion in [Issues](https://github.com/stark-studio-labs/sims4-mod-builder/issues).
+```bash
+# Clone the repo
+git clone https://github.com/stark-studio-labs/sims4-mod-builder.git
+cd sims4-mod-builder
+
+# Open in your browser (no build step required)
+open index.html
+```
+
+The prototype is a static web app — no Node.js, no build tools, no dependencies. Just HTML, CSS, and JavaScript.
+
+### What You Can Do Now
+
+1. **Trait Builder** — Define traits with buffs, conflicts, icons, and age restrictions. See real-time XML preview.
+2. **Career Builder** — Create multi-level careers with salaries, required skills, and schedules.
+3. **Interaction Builder** — Add social/object interactions with outcome effects and XML Injector snippets.
+4. **Export** — Download generated XML tuning files. (Full `.package` export coming in v0.2.)
+
+### Project Structure
+
+```
+sims4-mod-builder/
+├── index.html              # Main application
+├── css/
+│   ├── style.css           # Core layout, sidebar, theme
+│   ├── components.css      # Buttons, inputs, cards, tooltips
+│   └── builders.css        # Builder forms, preview panels
+├── js/
+│   ├── app.js              # View management, form logic, export
+│   └── generators.js       # XML generation for traits, careers, interactions
+└── README.md
+```
 
 ---
 
