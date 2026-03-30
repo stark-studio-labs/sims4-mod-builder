@@ -37,7 +37,7 @@
 - [🎨 What Is This?](#-what-is-this)
 - [😤 The Problem It Solves](#-the-problem-it-solves)
 - [👻 What Happened to Mod Constructor?](#-what-happened-to-mod-constructor)
-- [⚖️ Comparison to Existing Tools](#%EF%B8%8F-comparison-to-existing-tools)
+- [⚖️ How It Compares](#%EF%B8%8F-how-it-compares)
 - [✨ Features (Coming)](#-features-coming)
   - [🖼️ Visual Tuning Editor](#%EF%B8%8F-visual-tuning-editor)
   - [📝 Mod Templates](#-mod-templates)
@@ -46,7 +46,7 @@
   - [📂 Project Management](#-project-management)
 - [👥 Who This Is For](#-who-this-is-for)
 - [⚙️ Technical Approach](#%EF%B8%8F-technical-approach)
-- [📊 Status](#-status)
+- [🗺️ Roadmap](#%EF%B8%8F-roadmap)
 - [🚀 Getting Started](#-getting-started)
 - [🔗 Related Projects](#-related-projects)
 
@@ -80,17 +80,26 @@ The community has been without a maintained beginner-friendly creation tool sinc
 
 ---
 
-## ⚖️ Comparison to Existing Tools
+## ⚖️ How It Compares
 
-| Tool | Approach | Skill Level | Status |
-|------|----------|-------------|--------|
-| **Sims 4 Studio** | Direct asset editing, recolors, CAS/B&B items | Intermediate–Advanced | Actively maintained |
-| **S4TK** | Node.js library for scripting `.package` creation | Developer | Actively maintained |
-| **Mod Constructor (Zerbu)** | Visual form editor for careers/traits | Beginner | Abandoned (~2022) |
-| **s4pe** | Low-level binary package editor | Advanced | Legacy |
-| **sims4-mod-builder** | Visual property editor for tuning + scripting IDE | Beginner–Intermediate | In development |
+| Tool | Approach | Skill Level | XML Required | Python Required | Status |
+|------|----------|-------------|--------------|-----------------|--------|
+| **Sims 4 Studio** | Direct asset editing, CAS/B&B items, recolors | Intermediate–Advanced | Yes | No | ✅ Actively maintained |
+| **S4TK** | Node.js library for scripting .package creation | Developer | Programmatic | No (JavaScript) | ✅ Actively maintained |
+| **Mod Constructor (Zerbu)** | Visual form editor for careers/traits/aspirations | Beginner | No | No | ⚠️ Abandoned ~2022 |
+| **s4pe** | Low-level binary .package editor | Advanced | Yes | No | ⚠️ Legacy |
+| **XML Injector** | Simple XML tuning mods without scripting | Beginner | Yes | No | ✅ Actively maintained |
+| **sims4-mod-builder** | Visual property editor for tuning + built-in script IDE | Beginner–Intermediate | No | Optional | 🔨 In Development |
 
-sims4-mod-builder is not a replacement for Sims 4 Studio. S4S handles CAS items, meshes, and recolors — assets we don't touch. sims4-mod-builder is focused on **behavior mods**: tuning changes, new interactions, custom traits, skill additions, and simple Python scripts.
+### What sims4-mod-builder Does NOT Do
+
+Being honest about scope matters. This tool will not replace:
+
+- **Sims 4 Studio** for CAS items, meshes, recolors, or Build/Buy assets — we don't touch 3D assets
+- **S4TK** for programmatic .package manipulation at scale — devs who want code control should use S4TK
+- **Blender + S4 plugins** for any 3D modeling work
+
+sims4-mod-builder is focused on **behavior mods**: tuning overrides, new traits, interactions, careers, skills, buffs, and Python script mods. If you need to change how something *looks*, use S4S.
 
 ---
 
@@ -148,11 +157,57 @@ sims4-mod-builder is not a replacement for Sims 4 Studio. S4S handles CAS items,
 
 ---
 
-## 📊 Status
+## 🗺️ Roadmap
 
-**Prototype live.** Open `index.html` in any browser to try the Trait Builder, Career Builder, and Interaction Builder.
+### Core Engine
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Project file format (.s4project) | 🔨 In Progress | JSON, version-controllable source format |
+| DBPF .package read/write | 🔨 In Progress | Via S4TK integration |
+| Base game tuning index | 📋 Planned | Curated resource key index for property browser |
+| EA patch update pipeline | 📋 Planned | Keep tuning index current after EA updates |
 
-Follow [Stark Studio Labs](https://github.com/stark-studio-labs) for updates. If you have specific mod types or features you'd like to see supported, open an issue.
+### Visual Tuning Editor
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Property browser | 📋 Planned | Navigate tuning categories without XML |
+| Value editor — numbers/strings/enums/booleans | 📋 Planned | Form controls that write XML |
+| Live preview (human-readable effect description) | 📋 Planned | "Sims will max Cooking 30% faster" |
+| Default diff view | 📋 Planned | Compare changes against base game tuning |
+
+### Mod Templates
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Trait creator | 📋 Planned | Name, description, effects, CAS category, buffs |
+| Career builder | 📋 Planned | Branches, levels, schedules, performance metrics |
+| Interaction injector | 📋 Planned | New social/object interactions via XML Injector |
+| Buff creator | 📋 Planned | Moodlets with emotions, durations, behaviors |
+| Skill creator | 📋 Planned | New skills with level descriptions |
+
+### Python Scripting IDE
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Built-in editor | 📋 Planned | Monaco-based with Python support |
+| EA API autocomplete | 📋 Planned | Type stubs from sims4-stark-devkit |
+| Boilerplate generation | 📋 Planned | Scaffolds for common patterns |
+| One-click compile | 📋 Planned | .py → .pyc → .ts4script |
+| Error highlighting | 📋 Planned | Common Sims 4 scripting mistakes flagged |
+
+### Packaging & Distribution
+| Feature | Status | Notes |
+|---------|--------|-------|
+| One-click package | 📋 Planned | Combine tuning + scripts into .package |
+| Mod metadata | 📋 Planned | Creator, version, game version requirement |
+| Direct Mods/ install | 📋 Planned | Push directly to EA Mods folder |
+| Export to sims4-mod-manager | 📋 Planned | Tracked updates via mod manager |
+
+### Platform
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Windows | 📋 Planned | Primary target |
+| Mac | 📋 Planned | Secondary target |
+| Linux | ❌ Out of Scope | EA doesn't support Linux; no Mods folder |
+| Web-based | ❌ Out of Scope | Requires local file system access |
 
 ---
 
