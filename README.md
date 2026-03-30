@@ -16,7 +16,43 @@
 
 ---
 
-## What Is This?
+## 🌐 Stark Labs Ecosystem
+
+> Everything we build for The Sims 4 modding community — open source, interconnected, and community-driven.
+
+| Repo | What It Does | Status |
+|------|-------------|--------|
+| 📚 **[awesome-sims4-mods](https://github.com/stark-studio-labs/awesome-sims4-mods)** | Curated mod directory with compatibility tracking | ![Active](https://img.shields.io/badge/-active-brightgreen) |
+| 🧱 **[sims4-stark-framework](https://github.com/stark-studio-labs/sims4-stark-framework)** | Modern typed modding framework (replaces S4CL patterns) | ![Active](https://img.shields.io/badge/-active-brightgreen) |
+| 🔧 **[sims4-stark-devkit](https://github.com/stark-studio-labs/sims4-stark-devkit)** | CLI toolkit — decompile, package, scaffold, test | ![Active](https://img.shields.io/badge/-active-brightgreen) |
+| 📦 **[sims4-mod-manager](https://github.com/stark-studio-labs/sims4-mod-manager)** | Scan, organize, and detect conflicts in your mod collection | ![Alpha](https://img.shields.io/badge/-alpha-orange) |
+| 🎨 **[sims4-mod-builder](https://github.com/stark-studio-labs/sims4-mod-builder)** | Visual mod creation tool — no XML knowledge needed | ![In Dev](https://img.shields.io/badge/-in%20dev-yellow) |
+| 🔬 **[sims4-mod-revival](https://github.com/stark-studio-labs/sims4-mod-revival)** | Decompile and revive abandoned community mods | ![Active](https://img.shields.io/badge/-active-brightgreen) |
+| 💰 **[sims4-economy-sim](https://github.com/stark-studio-labs/sims4-economy-sim)** | Banking, bills, jobs, and stock market overhaul mod | ![Pre-Alpha](https://img.shields.io/badge/-pre--alpha-red) |
+
+---
+
+## 📖 Table of Contents
+
+- [🎨 What Is This?](#-what-is-this)
+- [😤 The Problem It Solves](#-the-problem-it-solves)
+- [👻 What Happened to Mod Constructor?](#-what-happened-to-mod-constructor)
+- [⚖️ Comparison to Existing Tools](#%EF%B8%8F-comparison-to-existing-tools)
+- [✨ Features (Coming)](#-features-coming)
+  - [🖼️ Visual Tuning Editor](#%EF%B8%8F-visual-tuning-editor)
+  - [📝 Mod Templates](#-mod-templates)
+  - [🐍 Python Scripting (Intermediate)](#-python-scripting-intermediate)
+  - [📦 Packaging & Distribution](#-packaging--distribution)
+  - [📂 Project Management](#-project-management)
+- [👥 Who This Is For](#-who-this-is-for)
+- [⚙️ Technical Approach](#%EF%B8%8F-technical-approach)
+- [📊 Status](#-status)
+- [🚀 Getting Started](#-getting-started)
+- [🔗 Related Projects](#-related-projects)
+
+---
+
+## 🎨 What Is This?
 
 **sims4-mod-builder** is a visual mod creation tool for The Sims 4. You describe what you want your mod to do — using a property editor, not raw XML — and the builder generates the correct tuning files and packages the mod for you.
 
@@ -24,7 +60,7 @@ The goal: a first-time mod creator should be able to build and install a functio
 
 ---
 
-## The Problem It Solves
+## 😤 The Problem It Solves
 
 Making Sims 4 mods today requires knowing three separate things at once:
 
@@ -36,7 +72,7 @@ Tools like Sims 4 Studio (S4S) exist and are excellent — but they're oriented 
 
 ---
 
-## What Happened to Mod Constructor?
+## 👻 What Happened to Mod Constructor?
 
 Zerbu's **Mod Constructor** was the last serious attempt at a visual mod creation tool for Sims 4. It covered careers, clubs, traits, and aspirations via a form-based interface. It was last updated around 2022 and has been functionally abandoned — it doesn't support current game structures and has no active development.
 
@@ -44,7 +80,7 @@ The community has been without a maintained beginner-friendly creation tool sinc
 
 ---
 
-## Comparison to Existing Tools
+## ⚖️ Comparison to Existing Tools
 
 | Tool | Approach | Skill Level | Status |
 |------|----------|-------------|--------|
@@ -58,41 +94,41 @@ sims4-mod-builder is not a replacement for Sims 4 Studio. S4S handles CAS items,
 
 ---
 
-## Features (Coming)
+## ✨ Features (Coming)
 
-### Visual Tuning Editor
+### 🖼️ Visual Tuning Editor
 - **Property browser** — navigate game tuning categories (interactions, traits, skills, careers, needs, whims, emotions) without touching XML
 - **Value editor** — modify numeric ranges, string lists, enum selections, and boolean flags via form controls; the tool writes the XML
 - **Live preview** — see the human-readable effect of your change ("Sims will now max the Cooking skill 30% faster") before packaging
 - **Default diff view** — compare your changes against the base game tuning to see exactly what your mod overrides
 
-### Mod Templates
+### 📝 Mod Templates
 - **Trait creator** — define a new trait: name, description, gameplay effects, compatible aspirations, CAS category, and buff associations
 - **Career builder** — create a new career with branches, levels, performance metrics, work schedules, and daily tasks
 - **Skill creator** — add a new skill with level descriptions and unlock gates
 - **Interaction injector** — add new social or object interactions to existing Sims or objects using XML Injector as the injection layer
 - **Buff creator** — define new moodlets with associated emotions, durations, and triggered behaviors
 
-### Python Scripting (Intermediate)
+### 🐍 Python Scripting (Intermediate)
 - **Script IDE** — built-in editor with Sims 4 Python API autocomplete and type hints
 - **Boilerplate generation** — generate the correct Python scaffolding for common patterns (service registration, event listeners, cheat commands, custom interactions)
 - **One-click compile** — compile `.py` to `.pyc` and package into `.ts4script` without manual toolchain setup
 - **Error highlighting** — surface common Sims 4 scripting mistakes before packaging (wrong base class, missing `@classproperty`, incorrect resource key format)
 
-### Packaging & Distribution
+### 📦 Packaging & Distribution
 - **One-click package** — combine all tuning files and scripts into a correctly structured `.package` file
 - **Mod metadata** — attach creator name, version, game version requirement, and description that surfaces in Better Exceptions and future tooling
 - **Direct install** — push the packaged mod directly to your `Mods/` folder from the builder
 - **Export to sims4-mod-manager** — publish the mod to your local mod manager install for tracked updates
 
-### Project Management
+### 📂 Project Management
 - **Project files** — save your mod as an editable `.s4project` file (version-controllable source format)
 - **Multi-file mods** — manage complex mods with multiple tuning files, a Python script, and a dependency list in one project
 - **Git integration** — optional source control for your mod project
 
 ---
 
-## Who This Is For
+## 👥 Who This Is For
 
 **Beginner creators** who want to make their first mod without reading 10 tutorials first. Start with a template, adjust properties, click Build, install. That's the target experience.
 
@@ -102,7 +138,7 @@ sims4-mod-builder is not a replacement for Sims 4 Studio. S4S handles CAS items,
 
 ---
 
-## Technical Approach
+## ⚙️ Technical Approach
 
 - **Platform:** Electron + React (cross-platform desktop: Windows, Mac)
 - **Tuning parsing:** Built on S4TK for `.package` file read/write
@@ -112,7 +148,7 @@ sims4-mod-builder is not a replacement for Sims 4 Studio. S4S handles CAS items,
 
 ---
 
-## Status
+## 📊 Status
 
 In active development. No release date yet.
 
@@ -120,10 +156,23 @@ Follow [Stark Studio Labs](https://github.com/stark-studio-labs) for updates. If
 
 ---
 
-## Related Projects
+## 🚀 Getting Started
 
-- [awesome-sims4-mods](https://github.com/stark-studio-labs/awesome-sims4-mods) — Curated mod directory
-- [sims4-mod-manager](https://github.com/stark-studio-labs/sims4-mod-manager) — Mod installation and update management
+> sims4-mod-builder is in active development. Want to try it early?
+> Star the repo and watch for releases, or join the discussion in [Issues](https://github.com/stark-studio-labs/sims4-mod-builder/issues).
+
+---
+
+## 🔗 Related Projects
+
+| Repo | Description |
+|------|-------------|
+| 📚 [awesome-sims4-mods](https://github.com/stark-studio-labs/awesome-sims4-mods) | Curated mod directory with compatibility tracking |
+| 🧱 [sims4-stark-framework](https://github.com/stark-studio-labs/sims4-stark-framework) | Modern typed modding framework (replaces S4CL patterns) |
+| 🔧 [sims4-stark-devkit](https://github.com/stark-studio-labs/sims4-stark-devkit) | CLI toolkit — decompile, package, scaffold, test |
+| 📦 [sims4-mod-manager](https://github.com/stark-studio-labs/sims4-mod-manager) | Scan, organize, and detect conflicts in your mod collection |
+| 🔬 [sims4-mod-revival](https://github.com/stark-studio-labs/sims4-mod-revival) | Decompile and revive abandoned community mods |
+| 💰 [sims4-economy-sim](https://github.com/stark-studio-labs/sims4-economy-sim) | Banking, bills, jobs, and stock market overhaul mod |
 
 ---
 
