@@ -1,0 +1,134 @@
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/stark-studio-labs/.github/main/assets/stark-labs-banner.svg" alt="Stark Studio Labs" width="100%">
+
+# sims4-mod-builder
+
+**Build Sims 4 mods visually. No XML required.**
+
+[![Status](https://img.shields.io/badge/status-in%20development-orange)](https://github.com/stark-studio-labs/sims4-mod-builder)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Made by Stark Studio Labs](https://img.shields.io/badge/made%20by-Stark%20Studio%20Labs-blueviolet)](https://github.com/stark-studio-labs)
+
+*Built by [Stark Studio Labs](https://github.com/stark-studio-labs)*
+
+</div>
+
+---
+
+## What Is This?
+
+**sims4-mod-builder** is a visual mod creation tool for The Sims 4. You describe what you want your mod to do — using a property editor, not raw XML — and the builder generates the correct tuning files and packages the mod for you.
+
+The goal: a first-time mod creator should be able to build and install a functional mod in under 30 minutes, with zero knowledge of how `.package` files work or what XML tuning syntax looks like.
+
+---
+
+## The Problem It Solves
+
+Making Sims 4 mods today requires knowing three separate things at once:
+
+1. **Where to find what you want to change** — The game has hundreds of tuning files spread across different resource types. Finding the right file to modify requires knowing what you're looking for before you can search.
+2. **How to write correct XML** — Sims 4 tuning is verbose and strict. One malformed attribute breaks the entire mod silently.
+3. **How to package the result** — `.package` files are binary containers. Creating one requires Sims 4 Studio or a scripting library, not just saving a file.
+
+Tools like Sims 4 Studio (S4S) exist and are excellent — but they're oriented toward experienced modders who already know what they're editing. The learning curve for a beginner is steep.
+
+---
+
+## What Happened to Mod Constructor?
+
+Zerbu's **Mod Constructor** was the last serious attempt at a visual mod creation tool for Sims 4. It covered careers, clubs, traits, and aspirations via a form-based interface. It was last updated around 2022 and has been functionally abandoned — it doesn't support current game structures and has no active development.
+
+The community has been without a maintained beginner-friendly creation tool since then. sims4-mod-builder picks up where Mod Constructor left off, with a broader scope and a modern development foundation.
+
+---
+
+## Comparison to Existing Tools
+
+| Tool | Approach | Skill Level | Status |
+|------|----------|-------------|--------|
+| **Sims 4 Studio** | Direct asset editing, recolors, CAS/B&B items | Intermediate–Advanced | Actively maintained |
+| **S4TK** | Node.js library for scripting `.package` creation | Developer | Actively maintained |
+| **Mod Constructor (Zerbu)** | Visual form editor for careers/traits | Beginner | Abandoned (~2022) |
+| **s4pe** | Low-level binary package editor | Advanced | Legacy |
+| **sims4-mod-builder** | Visual property editor for tuning + scripting IDE | Beginner–Intermediate | In development |
+
+sims4-mod-builder is not a replacement for Sims 4 Studio. S4S handles CAS items, meshes, and recolors — assets we don't touch. sims4-mod-builder is focused on **behavior mods**: tuning changes, new interactions, custom traits, skill additions, and simple Python scripts.
+
+---
+
+## Features (Coming)
+
+### Visual Tuning Editor
+- **Property browser** — navigate game tuning categories (interactions, traits, skills, careers, needs, whims, emotions) without touching XML
+- **Value editor** — modify numeric ranges, string lists, enum selections, and boolean flags via form controls; the tool writes the XML
+- **Live preview** — see the human-readable effect of your change ("Sims will now max the Cooking skill 30% faster") before packaging
+- **Default diff view** — compare your changes against the base game tuning to see exactly what your mod overrides
+
+### Mod Templates
+- **Trait creator** — define a new trait: name, description, gameplay effects, compatible aspirations, CAS category, and buff associations
+- **Career builder** — create a new career with branches, levels, performance metrics, work schedules, and daily tasks
+- **Skill creator** — add a new skill with level descriptions and unlock gates
+- **Interaction injector** — add new social or object interactions to existing Sims or objects using XML Injector as the injection layer
+- **Buff creator** — define new moodlets with associated emotions, durations, and triggered behaviors
+
+### Python Scripting (Intermediate)
+- **Script IDE** — built-in editor with Sims 4 Python API autocomplete and type hints
+- **Boilerplate generation** — generate the correct Python scaffolding for common patterns (service registration, event listeners, cheat commands, custom interactions)
+- **One-click compile** — compile `.py` to `.pyc` and package into `.ts4script` without manual toolchain setup
+- **Error highlighting** — surface common Sims 4 scripting mistakes before packaging (wrong base class, missing `@classproperty`, incorrect resource key format)
+
+### Packaging & Distribution
+- **One-click package** — combine all tuning files and scripts into a correctly structured `.package` file
+- **Mod metadata** — attach creator name, version, game version requirement, and description that surfaces in Better Exceptions and future tooling
+- **Direct install** — push the packaged mod directly to your `Mods/` folder from the builder
+- **Export to sims4-mod-manager** — publish the mod to your local mod manager install for tracked updates
+
+### Project Management
+- **Project files** — save your mod as an editable `.s4project` file (version-controllable source format)
+- **Multi-file mods** — manage complex mods with multiple tuning files, a Python script, and a dependency list in one project
+- **Git integration** — optional source control for your mod project
+
+---
+
+## Who This Is For
+
+**Beginner creators** who want to make their first mod without reading 10 tutorials first. Start with a template, adjust properties, click Build, install. That's the target experience.
+
+**Intermediate creators** who know what they want to change but don't want to manually manage XML files and package builds. Use the property editor for tuning, the script IDE for Python, and let the builder handle the rest.
+
+**Experienced creators** looking for a faster workflow for repetitive tasks. The template system and direct-to-Mods install make iteration faster than the manual toolchain.
+
+---
+
+## Technical Approach
+
+- **Platform:** Electron + React (cross-platform desktop: Windows, Mac)
+- **Tuning parsing:** Built on S4TK for `.package` file read/write
+- **Game data:** Ships with a curated index of base game tuning resource keys to power the property browser — updated after each major EA patch
+- **Python toolchain:** Bundles a Python 3.7 environment and the correct Sims 4 stubs for autocomplete and compilation
+- **Project format:** JSON-based `.s4project` files (human-readable, version-controllable)
+
+---
+
+## Status
+
+In active development. No release date yet.
+
+Follow [Stark Studio Labs](https://github.com/stark-studio-labs) for updates. If you have specific mod types or features you'd like to see supported, open an issue.
+
+---
+
+## Related Projects
+
+- [awesome-sims4-mods](https://github.com/stark-studio-labs/awesome-sims4-mods) — Curated mod directory
+- [sims4-mod-manager](https://github.com/stark-studio-labs/sims4-mod-manager) — Mod installation and update management
+
+---
+
+<div align="center">
+
+**Built with 💚 by [Stark Studio Labs](https://github.com/stark-studio-labs)**
+
+</div>
