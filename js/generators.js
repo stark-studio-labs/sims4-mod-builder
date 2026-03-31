@@ -342,3 +342,16 @@ function parseNeedType(detail) {
   if (lower.includes('bladder')) return 'BLADDER';
   return 'FUN';
 }
+
+// CommonJS export for Node.js / Jest (no-op in browser where module is undefined)
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = {
+    tuningId,
+    instanceHash,
+    generateTraitXML,
+    generateCareerXML,
+    generateInteractionXML,
+    parseOutcomeAmount,
+    parseNeedType,
+  };
+}

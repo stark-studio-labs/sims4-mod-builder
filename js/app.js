@@ -483,8 +483,8 @@ function exportMod(type) {
   var items = [
     ['Mod Type', type.charAt(0).toUpperCase() + type.slice(1)],
     ['Name', modName],
-    ['Package File', 'StarkLabs_' + safeName + '.package'],
-    ['Tuning Files', '1 XML resource'],
+    ['Download File', 'StarkLabs_' + safeName + '_' + type + '.xml'],
+    ['Export Format', 'XML prototype output'],
     ['Generator', 'Sims 4 Mod Builder v0.1.0']
   ];
 
@@ -507,7 +507,7 @@ function exportMod(type) {
   var strong = document.createElement('strong');
   strong.textContent = 'Prototype Note: ';
   note.appendChild(strong);
-  note.appendChild(document.createTextNode('In the full version, clicking Download will generate a binary .package file ready to drop into your Mods folder. For now, this exports the raw XML tuning that would be packaged.'));
+  note.appendChild(document.createTextNode('This prototype downloads XML only. It does not generate a Sims 4 .package yet.'));
 
   body.appendChild(summary);
   body.appendChild(note);
